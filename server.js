@@ -24,6 +24,8 @@ app.use(
 const passport = require("./middleware/passport");
 const authRoute = require("./routes/authRoute");
 const indexRoute = require("./routes/indexRoute");
+const remindersRoute = require('./routes/remindersRoute')
+const githubRoute = require('./routes/githubRoute')
 
 // Middleware for express
 app.use(express.json());
@@ -46,6 +48,8 @@ app.use((req, res, next) => {
 
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
+app.use('/reminder', remindersRoute)
+app.use('/github', githubRoute)
 
 app.listen(port, () => {
   console.log(`🚀 Server has started on port ${port}`);
