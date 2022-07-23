@@ -26,7 +26,6 @@ let remindersController = {
   },
 
   create: (req, res) => {
-   
     let reminder = {
       id: req.user.reminders.length ,
       title: req.body.title,

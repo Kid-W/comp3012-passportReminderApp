@@ -27,8 +27,6 @@ const getUserByGitHubIdOrCreate = (profile) => {
     
     return createdUser
   }
-
- 
 }
 
 function isUserValid(user, password) {

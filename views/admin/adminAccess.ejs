@@ -1,0 +1,18 @@
+<h1>Admin Page</h1>
+
+<div class="container">
+    <h3 class="page-header">Current Sessions</h3>
+  
+  <ul class="list-group">
+    <% currentSessions.forEach(function (sessionItem) { %>
+      <li class="list-group-item">
+        <strong>Session ID: <%= sessionItem %> </strong>
+        <a href="/adminAccess/revoke" class="btn btn-secondary"> Revoke Session</a> 
+      </li>
+    <% }) %>
+
+
+    
+  </ul>
+  
+  </div>

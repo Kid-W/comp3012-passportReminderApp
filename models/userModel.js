@@ -4,11 +4,12 @@ const database = [
     name: "Cindy",
     email: "cindy123@gmail.com",
     password: "cindy",
+    role: "admin",
     reminders: [
       {
         id: 0,
-        title: 'title',
-        description: 'description4',
+        title: 'Example',
+        description: 'Reminder',
         completed: false
       },
     ],
@@ -18,30 +19,16 @@ const database = [
     name: "BILL",
     email: "Bill@gmail.com",
     password: "b",
+    role : "user",
     reminders: [
       {
         id: 0,
-        title: '',
-        description: '',
+        title: 'Example',
+        description: 'Reminder',
         completed: false
       },
     ],
   },
-  // {
-  // //   id: 70993089,
-  // //   name: "BILL",fsdg
-  // //   email: "Bill@gmail.com",
-  // //   password: "b",
-  // //   reminders: [
-  // //     {
-  // //       id: 0,
-  // //       title: 'fsdfsd',
-  // //       description: '',
-  // //       completed: false
-  // //     },
-  // //   ],
-  // // },
-
 ];
 
 const userModel = {
@@ -66,11 +53,12 @@ const userModel = {
     const user = {
       id: profile.id,
       name: profile.username,
+      role: 'user',
       reminders : [
         {
           id: 0,
-          title: '',
-          description: '',
+          title: 'Example',
+          description: 'Reminder',
           completed: false
         }
       ]

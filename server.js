@@ -7,6 +7,7 @@ const port = process.env.port || 8000;
 const app = express();
 
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
@@ -26,6 +27,7 @@ const authRoute = require("./routes/authRoute");
 const indexRoute = require("./routes/indexRoute");
 const remindersRoute = require('./routes/remindersRoute')
 const githubRoute = require('./routes/githubRoute')
+const adminRoute = require('./routes/adminRoute')
 
 // Middleware for express
 app.use(express.json());
@@ -36,11 +38,18 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   console.log(`User details are: `);
+  //cidy
   console.log(req.user);
 
+  //cindys sessions obj
   console.log("Entire session object:");
   console.log(req.session);
 
+  //cindys session ID
+  console.log('Session ID is: ')
+  console.log(req.session.id)
+
+  // {user : 1} --> req.session.passport.user === 1
   console.log(`Session details are: `);
   console.log(req.session.passport);
   next();
@@ -49,7 +58,9 @@ app.use((req, res, next) => {
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
 app.use('/reminder', remindersRoute)
-app.use('/github', githubRoute)
+// app.use('/github', githubRoute)
+app.use('/admin', adminRoute)
+
 
 app.listen(port, () => {
   console.log(`🚀 Server has started on port ${port}`);

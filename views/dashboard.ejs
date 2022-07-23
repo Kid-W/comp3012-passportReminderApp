@@ -1,4 +1,7 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %> </p>
 <a href="/reminder/index" class="btn btn-secondary">Reminders</a>
+<% if(user.role === 'admin'){ %>
+     <a href="/admin/adminAccess" class="btn btn-secondary">Admin Acess</a> 
+    <%  } %>
 <a href="/auth/logout" class="btn btn-secondary">Logout</a>

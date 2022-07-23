@@ -3,11 +3,6 @@ const router = express.Router();
 const reminderController = require("../controllers/reminder_controller");
 const { ensureAuthenticated } = require("../middleware/checkAuth");
 
-// router.get('/reminders', ensureAuthenticated, (req, res)=> {
-//     res.render('reminders', {
-//         name: req.user.name
-//     })
-// })
 
 //localhost:8000/reminder
 
