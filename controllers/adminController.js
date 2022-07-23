@@ -13,33 +13,24 @@ let adminControllers = {
         let sessions = req.session.passport.user
         let theCurrentSession = []
         let store = req.sessionStore
-
-
-
-        // const keys = Object.keys(store)
-        // const values = Object.values(store.all())
-        // // console.log('KEYS', keys)
-        // // console.log('VALUES', values)
-        
-
+       
         for(let sid in store.sessions){
-            theCurrentSession.push(sid)
-            // console.log('SESSION STORE DETAILS',store.session[JSON.parse(store.sessions[sid])])
+           const userID =  JSON.parse(store.sessions[sid]).passport.user
+           const sessionID = sid
+           const sessionObj = {userid: userID, sessionid: sessionID}
+           theCurrentSession.push(sessionObj)
         }
-      
-        
+
         res.render('admin/adminAccess', {currentSessions : theCurrentSession})
             return sessions
-            
     },
 
-    revoke : (req, res) => {
-        // // ['sessionID', 'sessionID']
-        // req.session = null
-        
-        const sessionToDestroy = sessionStore.getUserById(req.session.id)
-        console.log('seson to desry',sessionToDestroy)
-        sessionToDestroy.logout()
+    revoke: (req, res) => {
+        let sessionId = req.sessionStore.sessions
+        if(sessionId === req.user.session.sessionID){
+            req.sessionStore.destroy(sessionID)
+        }
+      
         res.redirect('/dashboard')
     }
 }

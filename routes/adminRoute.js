@@ -7,7 +7,7 @@ const session = require("express-session");
 
 //localhost:8000/admin
 router.get('/adminAccess', ensureAuthenticated, adminController.home)
-router.get('/adminAccess', forwardAuthenticated)
+router.get('/revoke/:id', forwardAuthenticated, adminController.revoke)
 
 
 module.exports = router
